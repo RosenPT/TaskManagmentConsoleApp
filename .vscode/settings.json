@@ -1,0 +1,19 @@
+{
+    "dotnet.defaultSolution": "Task Managment App.sln",
+    "sqltools.connections": [
+        {
+            "ssh": "Disabled",
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 5432,
+            "askForPassword": true,
+            "driver": "PostgreSQL",
+            "name": "localhost",
+            "database": "TaskManagment",
+            "username": "postgres"
+        }
+    ],
+    "githubPullRequests.remotes": [
+        "origin"
+    ]
+}

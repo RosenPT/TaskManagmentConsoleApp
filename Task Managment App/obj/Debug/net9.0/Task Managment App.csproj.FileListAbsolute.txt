@@ -1,0 +1,19 @@
+D:\VSCode Projects\Task Management Application\Task Managment App\bin\Debug\net9.0\Task Managment App.exe
+D:\VSCode Projects\Task Management Application\Task Managment App\bin\Debug\net9.0\Task Managment App.deps.json
+D:\VSCode Projects\Task Management Application\Task Managment App\bin\Debug\net9.0\Task Managment App.runtimeconfig.json
+D:\VSCode Projects\Task Management Application\Task Managment App\bin\Debug\net9.0\Task Managment App.dll
+D:\VSCode Projects\Task Management Application\Task Managment App\bin\Debug\net9.0\Task Managment App.pdb
+D:\VSCode Projects\Task Management Application\Task Managment App\obj\Debug\net9.0\Task Managment App.GeneratedMSBuildEditorConfig.editorconfig
+D:\VSCode Projects\Task Management Application\Task Managment App\obj\Debug\net9.0\Task Managment App.AssemblyInfoInputs.cache
+D:\VSCode Projects\Task Management Application\Task Managment App\obj\Debug\net9.0\Task Managment App.AssemblyInfo.cs
+D:\VSCode Projects\Task Management Application\Task Managment App\obj\Debug\net9.0\Task Managment App.csproj.CoreCompileInputs.cache
+D:\VSCode Projects\Task Management Application\Task Managment App\obj\Debug\net9.0\Task Managment App.dll
+D:\VSCode Projects\Task Management Application\Task Managment App\obj\Debug\net9.0\refint\Task Managment App.dll
+D:\VSCode Projects\Task Management Application\Task Managment App\obj\Debug\net9.0\Task Managment App.pdb
+D:\VSCode Projects\Task Management Application\Task Managment App\obj\Debug\net9.0\Task Managment App.genruntimeconfig.cache
+D:\VSCode Projects\Task Management Application\Task Managment App\obj\Debug\net9.0\ref\Task Managment App.dll
+D:\VSCode Projects\Task Management Application\Task Managment App\bin\Debug\net9.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+D:\VSCode Projects\Task Management Application\Task Managment App\bin\Debug\net9.0\Microsoft.Extensions.Logging.Abstractions.dll
+D:\VSCode Projects\Task Management Application\Task Managment App\bin\Debug\net9.0\Npgsql.dll
+D:\VSCode Projects\Task Management Application\Task Managment App\obj\Debug\net9.0\Task Managment App.csproj.AssemblyReference.cache
+D:\VSCode Projects\Task Management Application\Task Managment App\obj\Debug\net9.0\Task Man.2C362951.Up2Date
