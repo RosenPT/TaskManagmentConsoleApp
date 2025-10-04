@@ -1,4 +1,3 @@
-using Microsoft.VisualBasic;
 using Npgsql;
 
 namespace Task_Managment_App
@@ -29,7 +28,7 @@ namespace Task_Managment_App
             }
         }
 
-        public List<string> GetAllTasks()
+        public List<NewTask> GetAllTasks() //public List<string> GetAllTasks()
         {
             using (var conn = new NpgsqlConnection(Connection))
             {
@@ -40,50 +39,49 @@ namespace Task_Managment_App
                 using (var cmd = new NpgsqlCommand(querry, conn))
                 {
                     var reader = cmd.ExecuteReader();
-                    List<string> tasks = new List<string>();
+                    List<NewTask> tasks = new List<NewTask>(); //List<string> tasks = new List<string>()
                     while (reader.Read())
                     {
-                        string id = reader.GetInt32(0).ToString();
+                        //string id = reader.GetInt32(0).ToString();
                         string Title = reader.GetString(1).ToString();
                         string Description = reader.GetString(2);
-                        string Date = DateOnly.FromDateTime(reader.GetDateTime(3)).ToString();
-                        string IsCompleted = reader.GetBoolean(4).ToString();
+                        DateOnly Date = DateOnly.FromDateTime(reader.GetDateTime(3)); // string Date = DateOnly.FromDateTime(reader.GetDateTime(3)).ToString();
+                        bool IsCompleted = reader.GetBoolean(4); //string IsCompleted = reader.GetBoolean(4).ToString();
                         string Priority = reader.GetString(5);
-                        tasks.Add($"{id} - {Title} - {Description} - {Date} - {IsCompleted} - {Priority}");
+                        tasks.Add(new NewTask(Title, Description, Date, IsCompleted, Priority));
                     }
-
                     return tasks;
                 }
             }
         }
 
-        //public List<int> GetTaskId(NewTask task)
-        //{
-        //    using (var conn = new NpgsqlConnection(Connection))
-        //    {
-        //        conn.Open();
-//
-        //        var querry = @"SELECT ""Id"" FROM ""Tasks"" WHERE ""Title"" = @title ;""Description"" = @description ;""DueDate"" = @dueDate ;";
-//
-        //        using (var cmd = new NpgsqlCommand(querry, conn))
-        //        {
-        //            cmd.Parameters.AddWithValue("title", task.Title);
-        //            cmd.Parameters.AddWithValue("description", task.Description);
-        //            cmd.Parameters.AddWithValue("dueDate", task.DueDate);
-//
-        //            var reader = cmd.ExecuteReader();
-        //            List<int> taskIds = new List<int>();
-//
-        //            while (reader.Read())
-        //            {
-        //                taskIds.Add(reader.GetInt32(0));
-        //            }
-//
-        //            return taskIds;
-        //        }
-        //    }
-//
-        //}
+        public List<int> GetTaskId(NewTask task)
+        {
+            using (var conn = new NpgsqlConnection(Connection))
+            {
+                conn.Open();
+
+                var querry = @"SELECT ""Id"" FROM ""Tasks"" WHERE ""Title"" = @title ;""Description"" = @description ;""DueDate"" = @dueDate ;";
+
+                using (var cmd = new NpgsqlCommand(querry, conn))
+                {
+                    cmd.Parameters.AddWithValue("title", task.Title);
+                    cmd.Parameters.AddWithValue("description", task.Description);
+                    cmd.Parameters.AddWithValue("dueDate", task.DueDate);
+
+                    var reader = cmd.ExecuteReader();
+                    List<int> taskIds = new List<int>();
+
+                    while (reader.Read())
+                    {
+                        taskIds.Add(reader.GetInt32(0));
+                    }
+
+                    return taskIds;
+                }
+            }
+
+        }
 
         public async Task DeleteFromDataBase(NewTask task)
         {

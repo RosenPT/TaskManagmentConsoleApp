@@ -17,3 +17,4 @@ D:\VSCode Projects\Task Management Application\Task Managment App\bin\Debug\net9
 D:\VSCode Projects\Task Management Application\Task Managment App\bin\Debug\net9.0\Npgsql.dll
 D:\VSCode Projects\Task Management Application\Task Managment App\obj\Debug\net9.0\Task Managment App.csproj.AssemblyReference.cache
 D:\VSCode Projects\Task Management Application\Task Managment App\obj\Debug\net9.0\Task Man.2C362951.Up2Date
+D:\VSCode Projects\Task Management Application\Task Managment App\obj\Debug\net9.0\Task Managment App.sourcelink.json

@@ -17,9 +17,9 @@ namespace Task_Managment_App
             IsCompleted = isCompleted;
             Priority = priority;
         }
-        public string ShowTask()
+        public override string ToString()
         {
             return $"{Title} - {Description} - {DueDate} - {Priority} -{IsCompleted}";
         }
     }
-}
+}   
