@@ -15,12 +15,6 @@ namespace Task_Managment_App
         MEDIUM,
         HIGH
     }
-    public enum KeyInput
-    {
-        Enter = ConsoleKey.Enter,
-        Up = ConsoleKey.UpArrow,
-        Down = ConsoleKey.DownArrow
-    }
     public enum Menus
     {
         Main_menu,
