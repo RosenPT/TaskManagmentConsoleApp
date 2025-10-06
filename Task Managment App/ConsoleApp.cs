@@ -26,7 +26,9 @@ namespace Task_Managment_App
                         }
                         else if (keyInput.Key == ConsoleKey.DownArrow)
                         {
-
+                            Console.Clear();
+                            pos--;
+                            MainMenu(pos, options);
                         }
                         else if (keyInput.Key == ConsoleKey.Enter)
                         {
@@ -56,16 +58,17 @@ namespace Task_Managment_App
             Console.WriteLine();
             for (int i = 0; i < options.Length; i++)
             {
-                if (pos > options.Length)
+                if (pos > options.Length - 1)
                 {
                     pos = options.Length - 1;
                 }
-                else if (pos <= 0)
+                else if (pos < 0)
                 {
                     pos = 0;
                 }
                 if (options[i] == "Back")
                 {
+                    pos++;
                     continue;
                 }
                 if (options[i] == options[pos])
@@ -96,6 +99,12 @@ namespace Task_Managment_App
                     int id = dataBase.GetTaskId(task)[0];
                     Console.WriteLine($"{id} - {task}");
                 }
+
+                //var taskIds = dataBase.GetTaskId(task);
+                //    foreach (var id in taskIds)
+                //    {
+                //        Console.WriteLine($"{id} - {task}");
+                //    }
             }
         }
         public void MakeTask()
