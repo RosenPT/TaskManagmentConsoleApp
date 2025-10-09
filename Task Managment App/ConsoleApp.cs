@@ -4,14 +4,22 @@ namespace Task_Managment_App
     {
         public void Run(DataBase dataBase)
         {
-            int pos = 0; // pos to go trough options
             string[] options = { "Show Task", "Create Task", "Edit Task", "Delete Task", "Back", "Exit" };
+
+            List<int> visibleOptionIndices = Enumerable.Range(0, options.Length)
+            .Where(i => options[i] != "Back")
+            .ToList();
+
+            int visiblePos = 0;
+
             Options ChosenOption;
+
             Menus menu = Menus.Main_menu;
+
             List<NewTask> tasks = dataBase.GetAllTasks();
 
 
-            MainMenu(pos, options); //Startup menu
+            MainMenu(visiblePos, options, visibleOptionIndices); //Startup menu
             while (true)
             {
                 switch (menu)
@@ -21,20 +29,25 @@ namespace Task_Managment_App
                         if (keyInput.Key == ConsoleKey.UpArrow)
                         {
                             Console.Clear();
-                            pos++;
-                            MainMenu(pos, options);
+                            if (visiblePos > 0)
+                            {
+                                visiblePos--;
+                            }
+                            MainMenu(visiblePos, options, visibleOptionIndices);
                         }
                         else if (keyInput.Key == ConsoleKey.DownArrow)
                         {
                             Console.Clear();
-                            pos--;
-                            MainMenu(pos, options);
+                            if (visiblePos < visibleOptionIndices.Count - 1)
+                            {
+                                visiblePos++;
+                            }
+                            MainMenu(visiblePos, options, visibleOptionIndices);
                         }
                         else if (keyInput.Key == ConsoleKey.Enter)
                         {
 
                         }
-                        MainMenu(pos, options);
                         break;
 
                     case Menus.Show_tasks_menu:
@@ -50,34 +63,31 @@ namespace Task_Managment_App
             }
         }
 
-        public void MainMenu(int pos, string[] options)
+        public void MainMenu(int visiblePos, string[] options, List<int> visibleOptionIndices)
         {
             Console.WriteLine("---------------Welcome to Task Manager---------------");
             Console.WriteLine();
             Console.WriteLine("Choose option:");
             Console.WriteLine();
-            for (int i = 0; i < options.Length; i++)
+
+             for (int i = 0; i < visibleOptionIndices.Count; i++)
             {
-                if (pos > options.Length - 1)
-                {
-                    pos = options.Length - 1;
-                }
-                else if (pos < 0)
-                {
-                    pos = 0;
-                }
+                int optionIndex = visibleOptionIndices[i];
+                string option = options[optionIndex];
+
                 if (options[i] == "Back")
                 {
-                    pos++;
-                    continue;
+                    continue; 
                 }
-                if (options[i] == options[pos])
+                if (i == visiblePos)
                 {
-                    Console.WriteLine($" > {options[pos]}");
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine($"> {option}");
+                    Console.ResetColor();
                 }
                 else
                 {
-                    Console.WriteLine(options[i]);
+                    Console.WriteLine($"  {option}");
                 }
             }
             Console.WriteLine();
