@@ -4,22 +4,20 @@ namespace Task_Managment_App
     {
         public void Run(DataBase dataBase)
         {
-            string[] options = { "Show Task", "Create Task", "Edit Task", "Delete Task", "Back", "Exit" };
+            string[] menuOptions = { "Show Task", "Create Task", "Edit Task", "Delete Task", "Back", "Exit" };
+            string[] Priorities = { "LOW", "MEDIUM", "HIGH" };
+            str
 
-            List<int> visibleOptionIndices = Enumerable.Range(0, options.Length)
-            .Where(i => options[i] != "Back")
+            List<int> visibleOptionIndices = Enumerable.Range(0, menuOptions.Length)
+            .Where(i => menuOptions[i] != "Back")
             .ToList();
 
             int visiblePos = 0;
 
-            Options ChosenOption;
-
-            Menus menu = Menus.Main_menu;
-
             List<NewTask> tasks = dataBase.GetAllTasks();
 
 
-            MainMenu(visiblePos, options, visibleOptionIndices); //Startup menu
+            MainMenu(visiblePos, menuOptions, visibleOptionIndices); //Startup menu
             while (true)
             {
                 switch (menu)
@@ -33,7 +31,7 @@ namespace Task_Managment_App
                             {
                                 visiblePos--;
                             }
-                            MainMenu(visiblePos, options, visibleOptionIndices);
+                            MainMenu(visiblePos, menuOptions, visibleOptionIndices);
                         }
                         else if (keyInput.Key == ConsoleKey.DownArrow)
                         {
@@ -42,11 +40,12 @@ namespace Task_Managment_App
                             {
                                 visiblePos++;
                             }
-                            MainMenu(visiblePos, options, visibleOptionIndices);
+                            MainMenu(visiblePos, menuOptions, visibleOptionIndices);
                         }
                         else if (keyInput.Key == ConsoleKey.Enter)
                         {
-
+                            int selectedIndex = visibleOptionIndices[visiblePos];
+                            List<int> allEnumOptions = new List<int>();
                         }
                         break;
 
@@ -75,10 +74,6 @@ namespace Task_Managment_App
                 int optionIndex = visibleOptionIndices[i];
                 string option = options[optionIndex];
 
-                if (options[i] == "Back")
-                {
-                    continue; 
-                }
                 if (i == visiblePos)
                 {
                     Console.ForegroundColor = ConsoleColor.Green;
